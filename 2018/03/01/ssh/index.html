@@ -16,7 +16,7 @@
 <meta property="og:site_name" content="Horson Zhu的博客">
 <meta property="og:description" content="ssh到服务器总是要卡很久，ssh x.x.x.x -v 后发现主要卡在pledge: network查看secure日志12$ cat /var/log/securesshd[2721]: pam_systemd(sshd:session): Failed to create session: Connection timed out 发现在执行机上systemd-logind导致cpu 100">
 <meta property="og:locale" content="default">
-<meta property="og:updated_time" content="2019-03-06T06:42:49.562Z">
+<meta property="og:updated_time" content="2019-03-06T07:35:43.945Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="修复ssh连接服务器卡住的情况">
 <meta name="twitter:description" content="ssh到服务器总是要卡很久，ssh x.x.x.x -v 后发现主要卡在pledge: network查看secure日志12$ cat /var/log/securesshd[2721]: pam_systemd(sshd:session): Failed to create session: Connection timed out 发现在执行机上systemd-logind导致cpu 100">
@@ -184,7 +184,7 @@
 <li>systemd-logind主要功能是为每一个登陆session创建一个systemd角度的cgroup管理对象，更方便对session使用cgroup，在实际场景中没有什么用处，关闭不会影响正常ssh登陆</li>
 <li>在有crond任务时，触发systemd-logind回收不及时的bug</li>
 </ul>
-<p>解决方法<br><code>`</code>shell<br>$ systemctl restart systemd-logind</p>
+<p>解决方法<br><figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">$</span> systemctl restart systemd-logind</span><br></pre></td></tr></table></figure></p>
 
       
 
