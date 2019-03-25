@@ -157,6 +157,83 @@
           <div id="js-content" class="content-ll">
             
   
+    <article id="post-aliyun" class="article article-type-post  article-index" itemscope itemprop="blogPost">
+  <div class="article-inner">
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2019/03/25/aliyun/">阿里云全站加速刷新脚本</a>
+    </h1>
+  
+
+        
+        <a href="/2019/03/25/aliyun/" class="archive-article-date">
+  	<time datetime="2019-03-25T06:47:39.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2019-03-25</time>
+</a>
+        
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <ul>
+<li>通过python拼接url实现刷新全站加速cdn，具体参数请查看阿里云全站加速文档</li>
+</ul>
+<p>贴上python脚本<br><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">#!/usr/bin/python</span></span><br><span class="line"><span class="comment"># -*- coding:utf-8 -*-</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">import</span> sys,os</span><br><span class="line"><span class="keyword">import</span> urllib, urllib2</span><br><span class="line"><span class="keyword">import</span> base64</span><br><span class="line"><span class="keyword">import</span> hmac</span><br><span class="line"><span class="keyword">import</span> hashlib</span><br><span class="line"><span class="keyword">from</span> hashlib <span class="keyword">import</span> sha1</span><br><span class="line"><span class="keyword">import</span> time</span><br><span class="line"><span class="keyword">import</span> uuid</span><br><span class="line"></span><br><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">pushAliCdn</span>:</span></span><br><span class="line">    <span class="function"><span class="keyword">def</span> <span class="title">__init__</span><span class="params">(self)</span>:</span></span><br><span class="line">        self.cdn_server_address = <span class="string">'https://dcdn.aliyuncs.com'</span></span><br><span class="line">        self.access_key_id = <span class="string">'your_access_key_id'</span></span><br><span class="line">        self.access_key_secret = <span class="string">'your_access_key_secret'</span></span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">def</span> <span class="title">percent_encode</span><span class="params">(self, str)</span>:</span></span><br><span class="line">        res = urllib.quote(str.decode(sys.stdin.encoding).encode(<span class="string">'utf8'</span>), <span class="string">''</span>)</span><br><span class="line">        res = res.replace(<span class="string">'+'</span>, <span class="string">'%20'</span>)</span><br><span class="line">        res = res.replace(<span class="string">'*'</span>, <span class="string">'%2A'</span>)</span><br><span class="line">        res = res.replace(<span class="string">'%7E'</span>, <span class="string">'~'</span>)</span><br><span class="line">        <span class="keyword">return</span> res</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">def</span> <span class="title">compute_signature</span><span class="params">(self, parameters, access_key_secret)</span>:</span></span><br><span class="line">        sortedParameters = sorted(parameters.items(), key=<span class="keyword">lambda</span> parameters: parameters[<span class="number">0</span>])</span><br><span class="line">        canonicalizedQueryString = <span class="string">''</span></span><br><span class="line">        <span class="keyword">for</span> (k,v) <span class="keyword">in</span> sortedParameters:</span><br><span class="line">            canonicalizedQueryString += <span class="string">'&amp;'</span> + self.percent_encode(k) + <span class="string">'='</span> + self.percent_encode(v)</span><br><span class="line">        stringToSign = <span class="string">'GET&amp;%2F&amp;'</span> + self.percent_encode(canonicalizedQueryString[<span class="number">1</span>:])</span><br><span class="line">        h = hmac.new(access_key_secret + <span class="string">"&amp;"</span>, stringToSign, sha1)</span><br><span class="line">        signature = base64.encodestring(h.digest()).strip()</span><br><span class="line">        <span class="keyword">return</span> signature</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">def</span> <span class="title">compose_url</span><span class="params">(self, user_params)</span>:</span></span><br><span class="line">        timestamp = time.strftime(<span class="string">"%Y-%m-%dT%H:%M:%SZ"</span>, time.gmtime())</span><br><span class="line">	<span class="keyword">print</span> timestamp</span><br><span class="line">	parameters = &#123; \</span><br><span class="line">                <span class="string">'Format'</span>        : <span class="string">'JSON'</span>, \</span><br><span class="line">                <span class="string">'Version'</span>       : <span class="string">'2018-01-15'</span>, \</span><br><span class="line">                <span class="string">'AccessKeyId'</span>   : self.access_key_id, \</span><br><span class="line">                <span class="string">'SignatureVersion'</span>  : <span class="string">'1.0'</span>, \</span><br><span class="line">                <span class="string">'SignatureMethod'</span>   : <span class="string">'HMAC-SHA1'</span>, \</span><br><span class="line">                <span class="string">'SignatureNonce'</span>    : str(uuid.uuid1()), \</span><br><span class="line">                <span class="string">'Timestamp'</span>         : timestamp, \</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">for</span> key <span class="keyword">in</span> user_params.keys():</span><br><span class="line">            parameters[key] = user_params[key]</span><br><span class="line">        signature = self.compute_signature(parameters, self.access_key_secret)</span><br><span class="line">        parameters[<span class="string">'Signature'</span>] = signature</span><br><span class="line">        url = self.cdn_server_address + <span class="string">"/?"</span> + urllib.urlencode(parameters)</span><br><span class="line">        <span class="keyword">return</span> url</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">def</span> <span class="title">make_request</span><span class="params">(self, user_params, quiet=False)</span>:</span></span><br><span class="line">        url = self.compose_url(user_params)</span><br><span class="line">       <span class="comment">#print url</span></span><br><span class="line">        <span class="comment">#刷新url</span></span><br><span class="line">        <span class="keyword">try</span>:</span><br><span class="line">            req = urllib2.Request(url)</span><br><span class="line">            res_data = urllib2.urlopen(req)</span><br><span class="line">            res = res_data.read()</span><br><span class="line">            <span class="keyword">print</span> res</span><br><span class="line">	    <span class="keyword">return</span> res</span><br><span class="line">        <span class="keyword">except</span>:</span><br><span class="line">            <span class="keyword">return</span> user_params[<span class="string">'ObjectPath'</span>] + <span class="string">' refresh failed!'</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">if</span> __name__ == <span class="string">'__main__'</span>:</span><br><span class="line">    f = pushAliCdn()</span><br><span class="line">    params = &#123;<span class="string">'Action'</span>: <span class="string">'RefreshDcdnObjectCaches'</span>, <span class="string">'ObjectPath'</span>: sys.argv[<span class="number">1</span>], <span class="string">'ObjectType'</span>: <span class="string">'File'</span>&#125;</span><br><span class="line">    res = f.make_request(params)</span><br><span class="line">    f.make_request(params)</span><br></pre></td></tr></table></figure></p>
+
+      
+
+      
+    </div>
+    <div class="article-info article-info-index">
+      
+      
+	<div class="article-tag tagcloud">
+		<i class="icon-price-tags icon"></i>
+		<ul class="article-tag-list">
+			 
+        		<li class="article-tag-list-item">
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color1">Linux</a>
+        		</li>
+      		
+		</ul>
+	</div>
+
+      
+
+      
+        <p class="article-more-link">
+          <a class="article-more-a" href="/2019/03/25/aliyun/">展开全文 >></a>
+        </p>
+      
+
+      
+      <div class="clearfix"></div>
+    </div>
+  </div>
+</article>
+
+<aside class="wrap-side-operation">
+    <div class="mod-side-operation">
+        
+        <div class="jump-container" id="js-jump-container" style="display:none;">
+            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
+                <i class="icon-font icon-back"></i>
+            </a>
+            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
+                <i class="icon-font icon-plane jump-plane"></i>
+            </div>
+        </div>
+        
+        
+    </div>
+</aside>
+
+
+
+
+  
     <article id="post-timewait" class="article article-type-post  article-index" itemscope itemprop="blogPost">
   <div class="article-inner">
     
@@ -709,15 +786,11 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
           <ul class="article-tag-list" q-show="showTags">
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color1">nginx</a>
-              </li>
-             
-              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color1">Linux</a>
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color1">supervisor</a>
+                <a href="javascript:void(0)" class="js-tag color1">nginx</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -726,6 +799,10 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
              
               <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color5">tagB</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color1">supervisor</a>
               </li>
              
               <li class="article-tag-list-item">

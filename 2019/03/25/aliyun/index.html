@@ -6,16 +6,20 @@
   <meta name="renderer" content="webkit">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <link rel="dns-prefetch" href="//horsonzhu.github.io">
-  <title>Archives | Horson Zhu的博客</title>
+  <title>阿里云全站加速刷新脚本 | Horson Zhu的博客</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta name="keywords" content="linux">
-<meta property="og:type" content="website">
-<meta property="og:title" content="Horson Zhu的博客">
-<meta property="og:url" content="//horsonzhu.github.io/archives/index.html">
+  <meta name="description" content="通过python拼接url实现刷新全站加速cdn，具体参数请查看阿里云全站加速文档  贴上python脚本123456789101112131415161718192021222324252627282930313233343536373839404142434445464748495051525354555657585960616263646566676869707172#!/usr/bin/">
+<meta name="keywords" content="Linux">
+<meta property="og:type" content="article">
+<meta property="og:title" content="阿里云全站加速刷新脚本">
+<meta property="og:url" content="//horsonzhu.github.io/2019/03/25/aliyun/index.html">
 <meta property="og:site_name" content="Horson Zhu的博客">
+<meta property="og:description" content="通过python拼接url实现刷新全站加速cdn，具体参数请查看阿里云全站加速文档  贴上python脚本123456789101112131415161718192021222324252627282930313233343536373839404142434445464748495051525354555657585960616263646566676869707172#!/usr/bin/">
 <meta property="og:locale" content="default">
+<meta property="og:updated_time" content="2019-03-25T06:53:59.131Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="Horson Zhu的博客">
+<meta name="twitter:title" content="阿里云全站加速刷新脚本">
+<meta name="twitter:description" content="通过python拼接url实现刷新全站加速cdn，具体参数请查看阿里云全站加速文档  贴上python脚本123456789101112131415161718192021222324252627282930313233343536373839404142434445464748495051525354555657585960616263646566676869707172#!/usr/bin/">
   
     <link rel="alternative" href="/atom.xml" title="Horson Zhu的博客" type="application/atom+xml">
   
@@ -155,36 +159,38 @@
             <canvas data-colors="#eaeaea" data-sectionHeight="100" data-contentId="js-content" id="myCanvas1" class="anm-canvas"></canvas>
           </div>
           <div id="js-content" class="content-ll">
-            
+            <article id="post-aliyun" class="article article-type-post " itemscope itemprop="blogPost">
+  <div class="article-inner">
+    
+      <header class="article-header">
+        
   
+    <h1 class="article-title" itemprop="name">
+      阿里云全站加速刷新脚本
+    </h1>
   
-    
-    
-      
-      
-      <section class="archives-wrap">
-        <div class="archive-year-wrap">
-          <a href="/archives/2019" class="archive-year">2019</a>
-        </div>
-        <div class="archives">
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	<a href="/2019/03/25/aliyun/" class="archive-article-date">
+
+        
+        <a href="/2019/03/25/aliyun/" class="archive-article-date">
   	<time datetime="2019-03-25T06:47:39.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2019-03-25</time>
 </a>
-        </div>
-    	 
-  
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2019/03/25/aliyun/">阿里云全站加速刷新脚本</a>
-    </h1>
-  
+        
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <ul>
+<li>通过python拼接url实现刷新全站加速cdn，具体参数请查看阿里云全站加速文档</li>
+</ul>
+<p>贴上python脚本<br><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">#!/usr/bin/python</span></span><br><span class="line"><span class="comment"># -*- coding:utf-8 -*-</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">import</span> sys,os</span><br><span class="line"><span class="keyword">import</span> urllib, urllib2</span><br><span class="line"><span class="keyword">import</span> base64</span><br><span class="line"><span class="keyword">import</span> hmac</span><br><span class="line"><span class="keyword">import</span> hashlib</span><br><span class="line"><span class="keyword">from</span> hashlib <span class="keyword">import</span> sha1</span><br><span class="line"><span class="keyword">import</span> time</span><br><span class="line"><span class="keyword">import</span> uuid</span><br><span class="line"></span><br><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">pushAliCdn</span>:</span></span><br><span class="line">    <span class="function"><span class="keyword">def</span> <span class="title">__init__</span><span class="params">(self)</span>:</span></span><br><span class="line">        self.cdn_server_address = <span class="string">'https://dcdn.aliyuncs.com'</span></span><br><span class="line">        self.access_key_id = <span class="string">'your_access_key_id'</span></span><br><span class="line">        self.access_key_secret = <span class="string">'your_access_key_secret'</span></span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">def</span> <span class="title">percent_encode</span><span class="params">(self, str)</span>:</span></span><br><span class="line">        res = urllib.quote(str.decode(sys.stdin.encoding).encode(<span class="string">'utf8'</span>), <span class="string">''</span>)</span><br><span class="line">        res = res.replace(<span class="string">'+'</span>, <span class="string">'%20'</span>)</span><br><span class="line">        res = res.replace(<span class="string">'*'</span>, <span class="string">'%2A'</span>)</span><br><span class="line">        res = res.replace(<span class="string">'%7E'</span>, <span class="string">'~'</span>)</span><br><span class="line">        <span class="keyword">return</span> res</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">def</span> <span class="title">compute_signature</span><span class="params">(self, parameters, access_key_secret)</span>:</span></span><br><span class="line">        sortedParameters = sorted(parameters.items(), key=<span class="keyword">lambda</span> parameters: parameters[<span class="number">0</span>])</span><br><span class="line">        canonicalizedQueryString = <span class="string">''</span></span><br><span class="line">        <span class="keyword">for</span> (k,v) <span class="keyword">in</span> sortedParameters:</span><br><span class="line">            canonicalizedQueryString += <span class="string">'&amp;'</span> + self.percent_encode(k) + <span class="string">'='</span> + self.percent_encode(v)</span><br><span class="line">        stringToSign = <span class="string">'GET&amp;%2F&amp;'</span> + self.percent_encode(canonicalizedQueryString[<span class="number">1</span>:])</span><br><span class="line">        h = hmac.new(access_key_secret + <span class="string">"&amp;"</span>, stringToSign, sha1)</span><br><span class="line">        signature = base64.encodestring(h.digest()).strip()</span><br><span class="line">        <span class="keyword">return</span> signature</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">def</span> <span class="title">compose_url</span><span class="params">(self, user_params)</span>:</span></span><br><span class="line">        timestamp = time.strftime(<span class="string">"%Y-%m-%dT%H:%M:%SZ"</span>, time.gmtime())</span><br><span class="line">	<span class="keyword">print</span> timestamp</span><br><span class="line">	parameters = &#123; \</span><br><span class="line">                <span class="string">'Format'</span>        : <span class="string">'JSON'</span>, \</span><br><span class="line">                <span class="string">'Version'</span>       : <span class="string">'2018-01-15'</span>, \</span><br><span class="line">                <span class="string">'AccessKeyId'</span>   : self.access_key_id, \</span><br><span class="line">                <span class="string">'SignatureVersion'</span>  : <span class="string">'1.0'</span>, \</span><br><span class="line">                <span class="string">'SignatureMethod'</span>   : <span class="string">'HMAC-SHA1'</span>, \</span><br><span class="line">                <span class="string">'SignatureNonce'</span>    : str(uuid.uuid1()), \</span><br><span class="line">                <span class="string">'Timestamp'</span>         : timestamp, \</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">for</span> key <span class="keyword">in</span> user_params.keys():</span><br><span class="line">            parameters[key] = user_params[key]</span><br><span class="line">        signature = self.compute_signature(parameters, self.access_key_secret)</span><br><span class="line">        parameters[<span class="string">'Signature'</span>] = signature</span><br><span class="line">        url = self.cdn_server_address + <span class="string">"/?"</span> + urllib.urlencode(parameters)</span><br><span class="line">        <span class="keyword">return</span> url</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">def</span> <span class="title">make_request</span><span class="params">(self, user_params, quiet=False)</span>:</span></span><br><span class="line">        url = self.compose_url(user_params)</span><br><span class="line">       <span class="comment">#print url</span></span><br><span class="line">        <span class="comment">#刷新url</span></span><br><span class="line">        <span class="keyword">try</span>:</span><br><span class="line">            req = urllib2.Request(url)</span><br><span class="line">            res_data = urllib2.urlopen(req)</span><br><span class="line">            res = res_data.read()</span><br><span class="line">            <span class="keyword">print</span> res</span><br><span class="line">	    <span class="keyword">return</span> res</span><br><span class="line">        <span class="keyword">except</span>:</span><br><span class="line">            <span class="keyword">return</span> user_params[<span class="string">'ObjectPath'</span>] + <span class="string">' refresh failed!'</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">if</span> __name__ == <span class="string">'__main__'</span>:</span><br><span class="line">    f = pushAliCdn()</span><br><span class="line">    params = &#123;<span class="string">'Action'</span>: <span class="string">'RefreshDcdnObjectCaches'</span>, <span class="string">'ObjectPath'</span>: sys.argv[<span class="number">1</span>], <span class="string">'ObjectType'</span>: <span class="string">'File'</span>&#125;</span><br><span class="line">    res = f.make_request(params)</span><br><span class="line">    f.make_request(params)</span><br></pre></td></tr></table></figure></p>
 
-        <div class="article-info info-on-right">
-          
+      
+
+      
+    </div>
+    <div class="article-info article-info-index">
+      
+      
 	<div class="article-tag tagcloud">
 		<i class="icon-price-tags icon"></i>
 		<ul class="article-tag-list">
@@ -196,241 +202,122 @@
 		</ul>
 	</div>
 
-          
+      
 
+      
+
+      
+        
+<div class="share-btn share-icons tooltip-left">
+  <div class="tooltip tooltip-east">
+    <span class="tooltip-item">
+      <a href="javascript:;" class="share-sns share-outer">
+        <i class="icon icon-share"></i>
+      </a>
+    </span>
+    <span class="tooltip-content">
+      <div class="share-wrap">
+        <div class="share-icons">
+          <a class="weibo share-sns" href="javascript:;" data-type="weibo">
+            <i class="icon icon-weibo"></i>
+          </a>
+          <a class="weixin share-sns wxFab" href="javascript:;" data-type="weixin">
+            <i class="icon icon-weixin"></i>
+          </a>
+          <a class="qq share-sns" href="javascript:;" data-type="qq">
+            <i class="icon icon-qq"></i>
+          </a>
+          <a class="douban share-sns" href="javascript:;" data-type="douban">
+            <i class="icon icon-douban"></i>
+          </a>
+          <a class="qzone share-sns" href="javascript:;" data-type="qzone">
+            <i class="icon icon-qzone"></i>
+          </a>
+          <a class="facebook share-sns" href="javascript:;" data-type="facebook">
+            <i class="icon icon-facebook"></i>
+          </a>
+          <a class="twitter share-sns" href="javascript:;" data-type="twitter">
+            <i class="icon icon-twitter"></i>
+          </a>
+          <a class="google share-sns" href="javascript:;" data-type="google">
+            <i class="icon icon-google"></i>
+          </a>
         </div>
-        <div class="clearfix"></div>
-    </header>
+      </div>
+    </span>
+  </div>
+</div>
+
+<div class="page-modal wx-share js-wx-box">
+    <a class="close js-modal-close" href="javascript:;"><i class="icon icon-close"></i></a>
+    <p>扫一扫，分享到微信</p>
+    <div class="wx-qrcode">
+      <img src="//pan.baidu.com/share/qrcode?url=http://horsonzhu.github.io/2019/03/25/aliyun/" alt="微信分享二维码">
+    </div>
+</div>
+
+<div class="mask js-mask"></div>
+      
+      <div class="clearfix"></div>
+    </div>
   </div>
 </article>
+
   
-    
-    
-      
-        </div></section>
-      
-      
-      <section class="archives-wrap">
-        <div class="archive-year-wrap">
-          <a href="/archives/2018" class="archive-year">2018</a>
+<nav id="article-nav">
+  
+  
+    <a href="/2018/05/12/timewait/" id="article-nav-older" class="article-nav-link-wrap">
+      <div class="article-nav-title">内核报time wait bucket table overflow的解决方案</div>
+      <i class="icon-circle-right"></i>
+    </a>
+  
+</nav>
+
+
+<aside class="wrap-side-operation">
+    <div class="mod-side-operation">
+        
+        <div class="jump-container" id="js-jump-container" style="display:none;">
+            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
+                <i class="icon-font icon-back"></i>
+            </a>
+            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
+                <i class="icon-font icon-plane jump-plane"></i>
+            </div>
         </div>
-        <div class="archives">
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	<a href="/2018/05/12/timewait/" class="archive-article-date">
-  	<time datetime="2018-05-11T21:34:34.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2018-05-12</time>
-</a>
-        </div>
-    	 
+        
+        
+    </div>
+</aside>
+
+
+
   
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2018/05/12/timewait/">内核报time wait bucket table overflow的解决方案</a>
-    </h1>
+  
   
 
-        <div class="article-info info-on-right">
-          
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color1">Linux</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-          
-
-        </div>
-        <div class="clearfix"></div>
-    </header>
-  </div>
-</article>
-  
-    
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	<a href="/2018/03/01/ssh/" class="archive-article-date">
-  	<time datetime="2018-02-28T17:47:14.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2018-03-01</time>
-</a>
-        </div>
-    	 
-  
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2018/03/01/ssh/">修复ssh连接服务器卡住的情况</a>
-    </h1>
   
 
-        <div class="article-info info-on-right">
-          
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color5">tagA</a>
-        		</li>
-      		 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color5">tagB</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-          
-
-        </div>
-        <div class="clearfix"></div>
-    </header>
-  </div>
-</article>
   
-    
-    
-      
-        </div></section>
-      
-      
-      <section class="archives-wrap">
-        <div class="archive-year-wrap">
-          <a href="/archives/2017" class="archive-year">2017</a>
-        </div>
-        <div class="archives">
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	<a href="/2017/07/22/nginx/" class="archive-article-date">
-  	<time datetime="2017-07-21T17:47:47.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2017-07-22</time>
-</a>
-        </div>
-    	 
-  
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2017/07/22/nginx/">Nginx 代理 Websocket</a>
-    </h1>
+    <section id="comments">
+      <div id="disqus_thread"></div>
+        <script type="text/javascript">
+        /* * * CONFIGURATION VARIABLES: EDIT BEFORE PASTING INTO YOUR WEBPAGE * * */
+        var disqus_shortname = 'true'; // required: replace example with your forum shortname
+
+        /* * * DON'T EDIT BELOW THIS LINE * * */
+        (function() {
+          var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
+          dsq.src = '//' + disqus_shortname + '.disqus.com/embed.js';
+          (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+        })();
+      </script>
+      <noscript>Please enable JavaScript to view the <a href="https://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+    </section>
   
 
-        <div class="article-info info-on-right">
-          
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color1">nginx</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-          
-
-        </div>
-        <div class="clearfix"></div>
-    </header>
-  </div>
-</article>
   
-    
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	<a href="/2017/04/11/tomcat/" class="archive-article-date">
-  	<time datetime="2017-04-10T23:58:35.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2017-04-11</time>
-</a>
-        </div>
-    	 
-  
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2017/04/11/tomcat/">Tomcat三种运行模式</a>
-    </h1>
-  
-
-        <div class="article-info info-on-right">
-          
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color2">tomcat</a>
-        		</li>
-      		 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color5">java</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-          
-
-        </div>
-        <div class="clearfix"></div>
-    </header>
-  </div>
-</article>
-  
-    
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	<a href="/2017/03/20/supervisor/" class="archive-article-date">
-  	<time datetime="2017-03-19T22:00:00.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2017-03-20</time>
-</a>
-        </div>
-    	 
-  
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2017/03/20/supervisor/">Supervisor</a>
-    </h1>
-  
-
-        <div class="article-info info-on-right">
-          
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color1">Linux</a>
-        		</li>
-      		 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color1">supervisor</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-          
-
-        </div>
-        <div class="clearfix"></div>
-    </header>
-  </div>
-</article>
-  
-  
-    </div></section>
-  
-
-    
 
 
           </div>
@@ -460,8 +347,8 @@
 	var yiliaConfig = {
 		mathjax: false,
 		isHome: false,
-		isPost: false,
-		isArchive: true,
+		isPost: true,
+		isArchive: false,
 		isTag: false,
 		isCategory: false,
 		open_in_new: false,
